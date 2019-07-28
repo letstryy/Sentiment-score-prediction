@@ -104,11 +104,6 @@ bow_vectorizer1 = CountVectorizer(max_df=0.90, min_df=2, max_features=1000, stop
 bow1 = bow_vectorizer1.fit_transform(headline['result'])
 bow1.shape
 
-#TF-IDF Features
-tfidf_vectorizer = TfidfVectorizer(max_df=0.90, min_df=2, max_features=1000, stop_words='english')
-tfidf = tfidf_vectorizer.fit_transform(title['result'])
-tfidf.shape
-
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
@@ -128,12 +123,6 @@ test_bow1 = bow1[55932:,:]
 xtrain_bow1, xvalid_bow1, ytrain1, yvalid1 = train_test_split(train_bow1, train['SentimentHeadline'],
                                                           random_state=42,
                                                           test_size=0.3)
-#tfidf features
-train_tfidf = tfidf[:55932,:]
-test_tfidf = tfidf[55932:,:]
-
-xtrain_tfidf = train_tfidf[ytrain.index]
-xvalid_tfidf = train_tfidf[yvalid.index]
 
 model = xgb.XGBRegressor()
 xgb_model = model.fit(xtrain_bow, ytrain)
