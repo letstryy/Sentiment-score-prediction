@@ -7,3 +7,5 @@ News Headline and Title sentiment prediction
 
 ## Author
 Sneha Rawat [sneharawatt@gmail.com]
+
+Linkedin: https://www.linkedin.com/in/sneharawatt/
